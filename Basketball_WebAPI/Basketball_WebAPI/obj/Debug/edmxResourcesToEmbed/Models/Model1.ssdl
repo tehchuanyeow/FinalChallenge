@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="int" Nullable="false" />
+    <Property Name="Outcome" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="GameDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Fee" Type="money" Nullable="false" />
+    <Property Name="Forfeit" Type="bit" Nullable="false" />
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Team" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Authorised" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="MemberID" />
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BBModelStoreContainer">
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Member" Association="Self.FK_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

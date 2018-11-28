@@ -1,0 +1,66 @@
+﻿@model Basketball_WebAPI.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Outcome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Outcome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forfeit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forfeit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.Team)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GameID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

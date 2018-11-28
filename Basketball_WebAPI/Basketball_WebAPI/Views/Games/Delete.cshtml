@@ -1,0 +1,72 @@
+﻿@model Basketball_WebAPI.Models.Game
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Outcome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Outcome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forfeit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forfeit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.Team)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
